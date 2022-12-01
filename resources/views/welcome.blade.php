@@ -39,8 +39,9 @@
                                 <h4 class="card-title text-danger">لطفا به موارد زیر توجه بفرمایید:</h4>
                                 <ul>
                                     <li><small class="">فایل با فرمت XLSX باشد</small></li>
-                                    <li><small class="">فایل حداکثر 2048 کیلوبایت باشد</small></li>
-                                    <li><small class="">فقط صفحه (sheet) اول فایل خوانده می شود</small></li>
+                                    <li><small class="">فایل حداکثر 4096 کیلوبایت باشد</small></li>
+                                    <li><small class="">همه (sheet) های فایل خوانده می شود</small></li>
+                                    <li><small class="">ایندکس ها(ستون) از شماره 0 (صفر) شروع می شوند</small></li>
                                 </ul>
                             </div>
                             <div class="card-body">
@@ -57,6 +58,19 @@
                                             <div class="form-group">
                                                 <label for="date">تاریخ<i class="new-user-req text-danger"> * </i> </label>
                                                 <input type="text" id="date" class="form-control" name="date" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="user_id_index">ایندکس کد کاربر<i class="new-user-req text-danger"> * </i> </label>
+                                                <input type="number" id="user_id_index" class="form-control" name="user_id_index" value="0" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="price_index">ایندکس مبلغ<i class="new-user-req text-danger"> * </i> </label>
+                                                <input type="number" id="price_index" class="form-control" name="price_index" value="1" required/>
                                             </div>
                                         </div>
 

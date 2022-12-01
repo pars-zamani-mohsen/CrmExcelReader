@@ -14,8 +14,10 @@ class ExcelReaderController extends Controller
     public function import(Request $request)
     {
         $validate_data = array(
-            'file' => ['required', 'file', 'mimes:xlsx', 'max:2048'],
-            'date' => ['required', 'string']
+            'file' => ['required', 'file', 'mimes:xlsx', 'max:4096'],
+            'date' => ['required', 'string'],
+            'user_id_index' => ['required', 'int'],
+            'price_index' => ['required', 'int'],
         );
         $validatedData = $this->validate($request, $validate_data);
 
@@ -24,10 +26,10 @@ class ExcelReaderController extends Controller
             $collection = Excel::toCollection(new SalesImport, $request->file, null,  \Maatwebsite\Excel\Excel::XLSX);
             $collection->each(function($sheet) use(&$i, $validatedData) {
                 $sheet->each(function($row) use(&$i, $validatedData) {
-                    if (count($row) and $row[0]) {
+                    if (count($row) and $row[$validatedData['user_id_index']]) {
                         $sales = new ExcelReader();
-                        $sales->user_id = $row[0] ?? 0;
-                        $sales->price = $row[1] ?? 0;
+                        $sales->user_id = $row[$validatedData['user_id_index']];
+                        $sales->price = $row[$validatedData['price_index']] ?? 0;
                         $sales->order_at = Date::shamsiToTimestamp($validatedData['date']) ?? time();
                         $sales->created_at = time();
                         $sales->save();
@@ -35,6 +37,7 @@ class ExcelReaderController extends Controller
                     }
                 });
             });
+            echo '<a href="/" class="btn btn-primary">Return to home</a>';
             dd("done #$i");
 
         } catch (Exception $e) {
