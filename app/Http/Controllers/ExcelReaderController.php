@@ -18,6 +18,9 @@ class ExcelReaderController extends Controller
             'date' => ['required', 'string'],
             'user_id_index' => ['required', 'int'],
             'price_index' => ['required', 'int'],
+            'employee_role_index' => ['required', 'int'],
+            'group_id_index' => ['required', 'int'],
+            'city_id_index' => ['required', 'int'],
         );
         $validatedData = $this->validate($request, $validate_data);
 
@@ -29,6 +32,9 @@ class ExcelReaderController extends Controller
                     if (count($row) and $row[$validatedData['user_id_index']]) {
                         $sales = new ExcelReader();
                         $sales->user_id = $row[$validatedData['user_id_index']];
+                        $sales->employee_role = $row[$validatedData['employee_role_index']];
+                        $sales->group_id = $row[$validatedData['group_id_index']];
+                        $sales->city_id = $row[$validatedData['city_id_index']];
                         $sales->price = $row[$validatedData['price_index']] ?? 0;
                         $sales->order_at = Date::shamsiToTimestamp($validatedData['date']) ?? time();
                         $sales->created_at = time();

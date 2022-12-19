@@ -12,6 +12,9 @@ class ExcelReader extends Model
     protected $fillable = [
         'id',
         'user_id',
+        'employee_role',
+        'group_id',
+        'city_id',
         'price',
         'order_at',
         'created_at',

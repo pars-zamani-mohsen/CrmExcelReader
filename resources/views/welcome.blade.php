@@ -69,6 +69,24 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
+                                                <label for="employee_role_index">ایندکس نقش کاربر<i class="new-user-req text-danger"> * </i> </label>
+                                                <input type="number" id="employee_role_index" class="form-control" name="employee_role_index" value="0" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="group_id_index">ایندکس گروه کاربر<i class="new-user-req text-danger"> * </i> </label>
+                                                <input type="number" id="group_id_index" class="form-control" name="group_id_index" value="0" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="city_id_index">ایندکس شهر کاربر<i class="new-user-req text-danger"> * </i> </label>
+                                                <input type="number" id="city_id_index" class="form-control" name="city_id_index" value="0" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
                                                 <label for="price_index">ایندکس مبلغ<i class="new-user-req text-danger"> * </i> </label>
                                                 <input type="number" id="price_index" class="form-control" name="price_index" value="1" required/>
                                             </div>
