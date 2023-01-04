@@ -29,7 +29,7 @@ class ExcelReaderController extends Controller
             $collection = Excel::toCollection(new SalesImport, $request->file, null,  \Maatwebsite\Excel\Excel::XLSX);
             $collection->each(function($sheet) use(&$i, $validatedData) {
                 $sheet->each(function($row) use(&$i, $validatedData) {
-                    if (count($row) and $row[$validatedData['user_id_index']]) {
+                    if (count($row) and $row[$validatedData['user_id_index']] and is_int($row[$validatedData['user_id_index']])) {
                         $sales = new ExcelReader();
                         $sales->user_id = $row[$validatedData['user_id_index']];
                         $sales->employee_role = $row[$validatedData['employee_role_index']];
